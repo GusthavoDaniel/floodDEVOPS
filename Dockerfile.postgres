@@ -1,0 +1,15 @@
+FROM postgres:16
+
+
+USER postgres
+
+
+WORKDIR /usr/local/FloodWatch.API
+
+
+ENV POSTGRES_USER=fiapuser \
+    POSTGRES_PASSWORD=fiappass \
+    POSTGRES_DB=gs_floodwatch
+
+
+EXPOSE 5432

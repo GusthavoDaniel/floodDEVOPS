@@ -1,0 +1,156 @@
+@page
+@model FloodWatch.API.Pages.Sensores.CreateModel
+@{
+    ViewData["Title"] = "Novo Sensor";
+}
+
+<div class="container my-4">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="card border-0 shadow">
+                <div class="card-header bg-primary text-white">
+                    <h4 class="mb-0">
+                        <i class="fas fa-plus me-2"></i>Adicionar Novo Sensor
+                    </h4>
+                </div>
+                
+                <div class="card-body">
+                    <form method="post">
+                        <div asp-validation-summary="ModelOnly" class="alert alert-danger" role="alert"></div>
+                        
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label asp-for="Sensor.Nome" class="form-label">Nome do Sensor *</label>
+                                <input asp-for="Sensor.Nome" class="form-control" placeholder="Ex: Sensor Rio Tietê" />
+                                <span asp-validation-for="Sensor.Nome" class="text-danger"></span>
+                            </div>
+                            
+                            <div class="col-md-6 mb-3">
+                                <label asp-for="Sensor.Tipo" class="form-label">Tipo de Sensor *</label>
+                                <select asp-for="Sensor.Tipo" class="form-select">
+                                    <option value="">Selecione o tipo</option>
+                                    <option value="NivelAgua">Nível de Água</option>
+                                    <option value="Precipitacao">Precipitação</option>
+                                    <option value="Temperatura">Temperatura</option>
+                                    <option value="Umidade">Umidade</option>
+                                </select>
+                                <span asp-validation-for="Sensor.Tipo" class="text-danger"></span>
+                            </div>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label asp-for="Sensor.Latitude" class="form-label">Latitude *</label>
+                                <input asp-for="Sensor.Latitude" class="form-control" placeholder="-23.5489" step="0.0001" />
+                                <span asp-validation-for="Sensor.Latitude" class="text-danger"></span>
+                                <div class="form-text">Coordenada geográfica (decimal)</div>
+                            </div>
+                            
+                            <div class="col-md-6 mb-3">
+                                <label asp-for="Sensor.Longitude" class="form-label">Longitude *</label>
+                                <input asp-for="Sensor.Longitude" class="form-control" placeholder="-46.6388" step="0.0001" />
+                                <span asp-validation-for="Sensor.Longitude" class="text-danger"></span>
+                                <div class="form-text">Coordenada geográfica (decimal)</div>
+                            </div>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label asp-for="Sensor.Status" class="form-label">Status Inicial</label>
+                                <select asp-for="Sensor.Status" class="form-select">
+                                    <option value="Ativo">Ativo</option>
+                                    <option value="Inativo">Inativo</option>
+                                    <option value="Manutencao">Manutenção</option>
+                                </select>
+                                <span asp-validation-for="Sensor.Status" class="text-danger"></span>
+                            </div>
+                            
+                            <div class="col-md-6 mb-3">
+                                <label asp-for="Sensor.IntervaloLeituraMinutos" class="form-label">Intervalo de Leitura (min)</label>
+                                <input asp-for="Sensor.IntervaloLeituraMinutos" class="form-control" min="1" max="1440" />
+                                <span asp-validation-for="Sensor.IntervaloLeituraMinutos" class="text-danger"></span>
+                                <div class="form-text">Entre 1 e 1440 minutos</div>
+                            </div>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label asp-for="Sensor.ValorMinimo" class="form-label">Valor Mínimo</label>
+                                <input asp-for="Sensor.ValorMinimo" class="form-control" step="0.01" />
+                                <span asp-validation-for="Sensor.ValorMinimo" class="text-danger"></span>
+                                <div class="form-text">Valor mínimo esperado para leituras</div>
+                            </div>
+                            
+                            <div class="col-md-6 mb-3">
+                                <label asp-for="Sensor.ValorMaximo" class="form-label">Valor Máximo</label>
+                                <input asp-for="Sensor.ValorMaximo" class="form-control" step="0.01" />
+                                <span asp-validation-for="Sensor.ValorMaximo" class="text-danger"></span>
+                                <div class="form-text">Valor máximo esperado para leituras</div>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label asp-for="Sensor.Descricao" class="form-label">Descrição</label>
+                            <textarea asp-for="Sensor.Descricao" class="form-control" rows="3" 
+                                      placeholder="Descreva a localização e função do sensor..."></textarea>
+                            <span asp-validation-for="Sensor.Descricao" class="text-danger"></span>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <div class="form-check">
+                                <input asp-for="Sensor.AtivarAlertas" class="form-check-input" />
+                                <label asp-for="Sensor.AtivarAlertas" class="form-check-label">
+                                    Ativar alertas automáticos para este sensor
+                                </label>
+                            </div>
+                        </div>
+                        
+                        <hr>
+                        
+                        <div class="d-flex gap-3">
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-save me-2"></i>Salvar Sensor
+                            </button>
+                            <a asp-page="Index" class="btn btn-outline-secondary">
+                                <i class="fas fa-arrow-left me-2"></i>Voltar
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    
+    <script>
+        // Validação customizada para coordenadas
+        document.addEventListener('DOMContentLoaded', function() {
+            const latInput = document.querySelector('input[name="Sensor.Latitude"]');
+            const lngInput = document.querySelector('input[name="Sensor.Longitude"]');
+            
+            function validateCoordinates() {
+                const lat = parseFloat(latInput.value);
+                const lng = parseFloat(lngInput.value);
+                
+                if (lat && (lat < -90 || lat > 90)) {
+                    latInput.setCustomValidity('Latitude deve estar entre -90 e 90');
+                } else {
+                    latInput.setCustomValidity('');
+                }
+                
+                if (lng && (lng < -180 || lng > 180)) {
+                    lngInput.setCustomValidity('Longitude deve estar entre -180 e 180');
+                } else {
+                    lngInput.setCustomValidity('');
+                }
+            }
+            
+            latInput.addEventListener('input', validateCoordinates);
+            lngInput.addEventListener('input', validateCoordinates);
+        });
+    </script>
+}
+

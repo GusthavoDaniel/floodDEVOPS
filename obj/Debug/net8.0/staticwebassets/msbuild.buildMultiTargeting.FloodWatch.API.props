@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\FloodWatch.API.props" />
+</Project>

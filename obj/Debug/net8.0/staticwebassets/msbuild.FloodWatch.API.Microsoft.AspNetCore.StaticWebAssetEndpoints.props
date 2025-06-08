@@ -1,0 +1,28 @@
+﻿<Project>
+  <ItemGroup>
+    <StaticWebAssetEndpoint Include="_content/FloodWatch.API/css/site.css">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\site.css'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-LDRCLVqKxyHYPQXRBzPkeNwik5rGdsqeOP914x53ok4="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"1356"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022LDRCLVqKxyHYPQXRBzPkeNwik5rGdsqeOP914x53ok4=\u0022"},{"Name":"Last-Modified","Value":"Tue, 03 Jun 2025 23:57:35 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/FloodWatch.API/css/site.ong23efpcu.css">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\site.css'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"ong23efpcu"},{"Name":"integrity","Value":"sha256-LDRCLVqKxyHYPQXRBzPkeNwik5rGdsqeOP914x53ok4="},{"Name":"label","Value":"_content/FloodWatch.API/css/site.css"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"1356"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022LDRCLVqKxyHYPQXRBzPkeNwik5rGdsqeOP914x53ok4=\u0022"},{"Name":"Last-Modified","Value":"Tue, 03 Jun 2025 23:57:35 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/FloodWatch.API/js/site.js">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\js\site.js'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-5okY7dF45\u002Bm3howISgiczQpLP1pNpykWnZiucqV3rF8="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"2703"},{"Name":"Content-Type","Value":"text/javascript"},{"Name":"ETag","Value":"\u00225okY7dF45\u002Bm3howISgiczQpLP1pNpykWnZiucqV3rF8=\u0022"},{"Name":"Last-Modified","Value":"Tue, 03 Jun 2025 23:57:45 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/FloodWatch.API/js/site.q8usq56o7j.js">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\js\site.js'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"q8usq56o7j"},{"Name":"integrity","Value":"sha256-5okY7dF45\u002Bm3howISgiczQpLP1pNpykWnZiucqV3rF8="},{"Name":"label","Value":"_content/FloodWatch.API/js/site.js"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"2703"},{"Name":"Content-Type","Value":"text/javascript"},{"Name":"ETag","Value":"\u00225okY7dF45\u002Bm3howISgiczQpLP1pNpykWnZiucqV3rF8=\u0022"},{"Name":"Last-Modified","Value":"Tue, 03 Jun 2025 23:57:45 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+  </ItemGroup>
+</Project>

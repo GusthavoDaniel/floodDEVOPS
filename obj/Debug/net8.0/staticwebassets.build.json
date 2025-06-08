@@ -1,0 +1,228 @@
+{
+  "Version": 1,
+  "Hash": "xghf5CBJAdC9OKpKj6jMS//ZkWmC50MCppWWncv05g0=",
+  "Source": "FloodWatch.API",
+  "BasePath": "_content/FloodWatch.API",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [
+    {
+      "Name": "FloodWatch.API\\wwwroot",
+      "Source": "FloodWatch.API",
+      "ContentRoot": "D:\\floodnet\\FloodWatch.API\\wwwroot\\",
+      "BasePath": "_content/FloodWatch.API",
+      "Pattern": "**"
+    }
+  ],
+  "Assets": [
+    {
+      "Identity": "D:\\floodnet\\FloodWatch.API\\wwwroot\\css\\site.css",
+      "SourceId": "FloodWatch.API",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\floodnet\\FloodWatch.API\\wwwroot\\",
+      "BasePath": "_content/FloodWatch.API",
+      "RelativePath": "css/site#[.{fingerprint}]?.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "ong23efpcu",
+      "Integrity": "LDRCLVqKxyHYPQXRBzPkeNwik5rGdsqeOP914x53ok4=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\site.css"
+    },
+    {
+      "Identity": "D:\\floodnet\\FloodWatch.API\\wwwroot\\js\\site.js",
+      "SourceId": "FloodWatch.API",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\floodnet\\FloodWatch.API\\wwwroot\\",
+      "BasePath": "_content/FloodWatch.API",
+      "RelativePath": "js/site#[.{fingerprint}]?.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "q8usq56o7j",
+      "Integrity": "5okY7dF45+m3howISgiczQpLP1pNpykWnZiucqV3rF8=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\site.js"
+    }
+  ],
+  "Endpoints": [
+    {
+      "Route": "css/site.css",
+      "AssetFile": "D:\\floodnet\\FloodWatch.API\\wwwroot\\css\\site.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1356"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"LDRCLVqKxyHYPQXRBzPkeNwik5rGdsqeOP914x53ok4=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 03 Jun 2025 23:57:35 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-LDRCLVqKxyHYPQXRBzPkeNwik5rGdsqeOP914x53ok4="
+        }
+      ]
+    },
+    {
+      "Route": "css/site.ong23efpcu.css",
+      "AssetFile": "D:\\floodnet\\FloodWatch.API\\wwwroot\\css\\site.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1356"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"LDRCLVqKxyHYPQXRBzPkeNwik5rGdsqeOP914x53ok4=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 03 Jun 2025 23:57:35 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "ong23efpcu"
+        },
+        {
+          "Name": "label",
+          "Value": "css/site.css"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-LDRCLVqKxyHYPQXRBzPkeNwik5rGdsqeOP914x53ok4="
+        }
+      ]
+    },
+    {
+      "Route": "js/site.js",
+      "AssetFile": "D:\\floodnet\\FloodWatch.API\\wwwroot\\js\\site.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "2703"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"5okY7dF45+m3howISgiczQpLP1pNpykWnZiucqV3rF8=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 03 Jun 2025 23:57:45 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-5okY7dF45+m3howISgiczQpLP1pNpykWnZiucqV3rF8="
+        }
+      ]
+    },
+    {
+      "Route": "js/site.q8usq56o7j.js",
+      "AssetFile": "D:\\floodnet\\FloodWatch.API\\wwwroot\\js\\site.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "2703"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"5okY7dF45+m3howISgiczQpLP1pNpykWnZiucqV3rF8=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 03 Jun 2025 23:57:45 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "q8usq56o7j"
+        },
+        {
+          "Name": "label",
+          "Value": "js/site.js"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-5okY7dF45+m3howISgiczQpLP1pNpykWnZiucqV3rF8="
+        }
+      ]
+    }
+  ]
+}

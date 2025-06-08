@@ -1,0 +1,178 @@
+@page
+@model FloodWatch.API.Pages.Sensores.IndexModel
+@{
+    ViewData["Title"] = "Sensores";
+}
+
+<div class="container my-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2>
+            <i class="fas fa-satellite-dish text-primary me-2"></i>Gerenciamento de Sensores
+        </h2>
+        <a asp-page="Create" class="btn btn-primary">
+            <i class="fas fa-plus me-2"></i>Novo Sensor
+        </a>
+    </div>
+
+    <!-- Filtros -->
+    <div class="card mb-4">
+        <div class="card-body">
+            <form method="get" class="row g-3">
+                <div class="col-md-3">
+                    <label asp-for="FiltroNome" class="form-label">Nome do Sensor</label>
+                    <input asp-for="FiltroNome" class="form-control" placeholder="Digite o nome..." />
+                </div>
+                
+                <div class="col-md-3">
+                    <label asp-for="FiltroTipo" class="form-label">Tipo</label>
+                    <select asp-for="FiltroTipo" class="form-select">
+                        <option value="">Todos os tipos</option>
+                        <option value="NivelAgua">Nível de Água</option>
+                        <option value="Precipitacao">Precipitação</option>
+                        <option value="Temperatura">Temperatura</option>
+                        <option value="Umidade">Umidade</option>
+                    </select>
+                </div>
+                
+                <div class="col-md-3">
+                    <label asp-for="FiltroStatus" class="form-label">Status</label>
+                    <select asp-for="FiltroStatus" class="form-select">
+                        <option value="">Todos os status</option>
+                        <option value="Ativo">Ativo</option>
+                        <option value="Inativo">Inativo</option>
+                        <option value="Manutencao">Manutenção</option>
+                    </select>
+                </div>
+                
+                <div class="col-md-3 d-flex align-items-end">
+                    <button type="submit" class="btn btn-outline-primary me-2">
+                        <i class="fas fa-search me-1"></i>Filtrar
+                    </button>
+                    <a asp-page="Index" class="btn btn-outline-secondary">
+                        <i class="fas fa-times me-1"></i>Limpar
+                    </a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Lista de Sensores -->
+    <div class="row">
+        @foreach (var sensor in Model.Sensores)
+        {
+            <div class="col-lg-6 col-xl-4 mb-4">
+                <div class="card card-hover border-0 shadow-sm h-100">
+                    <div class="card-header bg-white border-0 d-flex justify-content-between align-items-center">
+                        <h6 class="mb-0 fw-bold">@sensor.Nome</h6>
+                        @switch (sensor.Status)
+                        {
+                            case "Ativo":
+                                <span class="badge bg-success">
+                                    <i class="fas fa-check-circle me-1"></i>Ativo
+                                </span>
+                                break;
+                            case "Inativo":
+                                <span class="badge bg-danger">
+                                    <i class="fas fa-times-circle me-1"></i>Inativo
+                                </span>
+                                break;
+                            default:
+                                <span class="badge bg-warning">
+                                    <i class="fas fa-wrench me-1"></i>Manutenção
+                                </span>
+                                break;
+                        }
+                    </div>
+                    
+                    <div class="card-body">
+                        <div class="mb-3">
+                            <small class="text-muted">Tipo:</small>
+                            <div class="fw-semibold">
+                                @switch (sensor.Tipo)
+{
+    case "NivelAgua":
+        <i class="fas fa-water text-primary me-1"></i>@:Nível de Água
+        break;
+    case "Precipitacao":
+        <i class="fas fa-cloud-rain text-info me-1"></i>@:Precipitação
+        break;
+    case "Temperatura":
+        <i class="fas fa-thermometer-half text-warning me-1"></i>@:Temperatura
+        break;
+    default:
+        <i class="fas fa-tint text-success me-1"></i>@:Umidade
+        break;
+}
+                            </div>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <small class="text-muted">Localização:</small>
+                            <div class="fw-semibold">
+                                <i class="fas fa-map-marker-alt text-danger me-1"></i>
+                                @sensor.Latitude.ToString("F4"), @sensor.Longitude.ToString("F4")
+                            </div>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <small class="text-muted">Última Leitura:</small>
+                            <div class="fw-semibold">
+                                @if (sensor.UltimaLeitura.HasValue)
+                                {
+                                    <i class="fas fa-clock text-secondary me-1"></i>
+                                    @sensor.UltimaLeitura.Value.ToString("dd/MM/yyyy HH:mm")
+                                }
+                                else
+                                {
+                                    <span class="text-muted">Nenhuma leitura</span>
+                                }
+                            </div>
+                        </div>
+                        
+                        @if (!string.IsNullOrEmpty(sensor.Descricao))
+                        {
+                            <div class="mb-3">
+                                <small class="text-muted">Descrição:</small>
+                                <div class="small">@sensor.Descricao</div>
+                            </div>
+                        }
+                    </div>
+                    
+                    <div class="card-footer bg-white border-0">
+                        <div class="d-flex gap-2">
+                            <a asp-page="Details" asp-route-id="@sensor.Id" class="btn btn-outline-primary btn-sm flex-fill">
+                                <i class="fas fa-eye me-1"></i>Detalhes
+                            </a>
+                            <a asp-page="Edit" asp-route-id="@sensor.Id" class="btn btn-outline-secondary btn-sm flex-fill">
+                                <i class="fas fa-edit me-1"></i>Editar
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+
+    @if (!Model.Sensores.Any())
+    {
+        <div class="text-center py-5">
+            <i class="fas fa-satellite-dish fa-4x text-muted mb-3"></i>
+            <h4 class="text-muted">Nenhum sensor encontrado</h4>
+            <p class="text-muted">Adicione sensores para começar o monitoramento.</p>
+            <a asp-page="Create" class="btn btn-primary">
+                <i class="fas fa-plus me-2"></i>Adicionar Primeiro Sensor
+            </a>
+        </div>
+    }
+</div>
+
+@section Scripts {
+    <script>
+        // Auto-refresh sensor status every 60 seconds
+        setInterval(function() {
+            // Simulate real-time status updates
+            console.log('Atualizando status dos sensores...');
+        }, 60000);
+    </script>
+}
+
