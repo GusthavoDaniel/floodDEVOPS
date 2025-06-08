@@ -1,209 +1,113 @@
-# 🌊 FloodWatch API
+FloodWatch API
+API REST para o sistema FloodWatch de monitoramento e alerta de enchentes em tempo real.
 
-**API REST para monitoramento e alerta de enchentes em tempo real**, desenvolvida em ASP.NET Core e integrada a banco de dados PostgreSQL. O projeto está 100% conteinerizado para entrega DevOps, com volume persistente e configuração segura.
-
----
-
-## 🛠️ Tecnologias Utilizadas
-
-- **ASP.NET Core 8.0**
-- **Entity Framework Core**
-- **PostgreSQL**
-- **JWT Authentication**
-- **Swagger / OpenAPI**
-- **Docker + Docker Compose**
-
----
-
-## 🗂️ Estrutura do Projeto
-
+Tecnologias Utilizadas
+ASP.NET Core 8.0
+Entity Framework Core
+PostgreSQL
+JWT Authentication
+Swagger/OpenAPI
+Docker
+Estrutura do Projeto
 FloodWatch.API/
-├── Controllers/ # Controladores da API
-├── Models/ # Modelos de dados
-├── DTOs/ # Data Transfer Objects
-├── Services/ # Lógica de negócios
-├── Repositories/ # Acesso a dados
-├── Data/ # DbContext do EF Core
-├── Migrations/ # Histórico de migrações
-├── Middleware/ # Middlewares customizados
-├── Configuration/ # Configurações e injeção
-├── Dockerfile # Dockerfile da aplicação
-docker-compose.yml # Orquestração dos serviços
+├── Controllers/       # Controladores da API
+├── Models/            # Modelos de dados
+├── DTOs/              # Data Transfer Objects
+├── Services/          # Serviços de negócio
+├── Repositories/      # Repositórios de dados
+├── Data/              # Contexto do Entity Framework
+├── Migrations/        # Migrações do banco de dados
+├── Middleware/        # Middlewares personalizados
+├── Configuration/     # Classes de configuração
+└── Dockerfile         # Configuração para containerização
+Requisitos
+.NET 8.0 SDK
+PostgreSQL
+Docker (opcional)
+Configuração
+Configuração do Banco de Dados
+A string de conexão está configurada no arquivo appsettings.json:
 
-yaml
-Copiar
-Editar
-
----
-
-## ⚙️ Configuração
-
-### 🔐 Configuração do Banco de Dados
-
-No `appsettings.json`:
-```json
 "ConnectionStrings": {
   "DefaultConnection": "Host=localhost;Database=floodwatch;Username=postgres;Password=postgres123;Port=5432"
 }
-🔐 Configuração JWT
-json
-Copiar
-Editar
+Configuração JWT
 "JwtSettings": {
   "SecretKey": "FloodWatch2025SecretKeyForJWTTokenGeneration123456789",
   "Issuer": "FloodWatch.API",
   "Audience": "FloodWatch.Client",
   "ExpirationHours": 24
 }
-▶️ Executando o Projeto
-✅ Usando .NET CLI (sem Docker)
-bash
-Copiar
-Editar
+Executando o Projeto
+Usando .NET CLI
 # Restaurar pacotes
 dotnet restore
 
-# Compilar
+# Compilar o projeto
 dotnet build
 
-# Criar a base de dados com migrações
+# Criar migrations
 dotnet ef migrations add InitialCreate
+
+# Aplicar migrations
 dotnet ef database update
 
-# Executar
+# Executar o projeto
 dotnet run
-🐳 Usando Docker
-bash
-Copiar
-Editar
-# Subir containers com volume persistente e rede customizada
-docker-compose up -d --build
+Usando Docker
+# Construir e iniciar os containers
+docker-compose up -d
 
-# Parar os serviços
+# Parar os containers
 docker-compose down
-🔌 Endpoints da API
-🔐 Autenticação
-POST /api/auth/login — Login
+Endpoints da API
+Autenticação
+POST /api/auth/login - Login de usuário
+POST /api/auth/register - Registro de usuário
+GET /api/auth/profile - Obter perfil do usuário
+PUT /api/auth/profile - Atualizar perfil do usuário
+POST /api/auth/change-password - Alterar senha
+Sensores
+GET /api/sensores - Listar todos os sensores
+GET /api/sensores/{id} - Obter sensor por ID
+POST /api/sensores - Criar novo sensor
+PUT /api/sensores/{id} - Atualizar sensor
+DELETE /api/sensores/{id} - Remover sensor
+GET /api/sensores/{id}/leituras - Obter leituras de um sensor
+Regiões
+GET /api/regioes - Listar todas as regiões
+GET /api/regioes/{id} - Obter região por ID
+POST /api/regioes - Criar nova região
+PUT /api/regioes/{id} - Atualizar região
+DELETE /api/regioes/{id} - Remover região
+Leituras
+GET /api/leituras - Listar leituras com filtros
+POST /api/leituras - Registrar nova leitura
+GET /api/leituras/tempo-real - Obter leituras em tempo real
+Alertas
+GET /api/alertas - Listar alertas ativos
+GET /api/alertas/{id} - Obter alerta por ID
+POST /api/alertas - Criar novo alerta
+PUT /api/alertas/{id} - Atualizar alerta
+DELETE /api/alertas/{id} - Cancelar alerta
+Documentação da API
+A documentação da API está disponível através do Swagger UI, acessível na raiz da aplicação quando em execução.
 
-POST /api/auth/register — Cadastro
+Containerização
+O projeto inclui um Dockerfile e um arquivo docker-compose.yml para facilitar a containerização e execução em ambientes Docker.
 
-GET /api/auth/profile — Perfil do usuário
+Dockerfile
+O Dockerfile segue as melhores práticas:
 
-PUT /api/auth/profile — Atualizar perfil
+Usa imagem oficial do .NET 8.0
+Executa com usuário não-root
+Utiliza multi-stage build para otimização
+Expõe as portas necessárias
+Configura variáveis de ambiente
+Docker Compose
+O docker-compose.yml configura:
 
-POST /api/auth/change-password — Trocar senha
-
-📡 Sensores
-GET /api/sensores
-
-GET /api/sensores/{id}
-
-POST /api/sensores
-
-PUT /api/sensores/{id}
-
-DELETE /api/sensores/{id}
-
-GET /api/sensores/{id}/leituras
-
-🌎 Regiões
-GET /api/regioes
-
-GET /api/regioes/{id}
-
-POST /api/regioes
-
-PUT /api/regioes/{id}
-
-DELETE /api/regioes/{id}
-
-📊 Leituras
-GET /api/leituras
-
-GET /api/leituras/tempo-real
-
-POST /api/leituras
-
-🚨 Alertas
-GET /api/alertas
-
-GET /api/alertas/{id}
-
-POST /api/alertas
-
-PUT /api/alertas/{id}
-
-DELETE /api/alertas/{id}
-
-📃 Documentação Swagger
-Disponível automaticamente ao rodar o projeto:
-
-bash
-Copiar
-Editar
-http://localhost:8080/swagger
-📦 Containerização
-📁 Dockerfile (Aplicação)
-Baseado em imagem oficial .NET 8.0 SDK/Runtime
-
-Usuário não-root
-
-WORKDIR configurado
-
-Variáveis de ambiente
-
-Porta 8080 exposta
-
-📁 Dockerfile (Banco de Dados)
-Imagem baseada em postgres:16
-
-Volume nomeado: postgres_data
-
-Variáveis: POSTGRES_DB, POSTGRES_USER, POSTGRES_PASSWORD
-
-Porta exposta: 5432
-
-⚙️ docker-compose.yml
-yaml
-Copiar
-Editar
-services:
-  api:
-    build: .
-    ports:
-      - "8080:8080"
-    environment:
-      - ASPNETCORE_ENVIRONMENT=Development
-    depends_on:
-      - db
-    networks:
-      - floodwatchnet
-
-  db:
-    build:
-      context: .
-      dockerfile: Dockerfile.db
-    environment:
-      POSTGRES_DB: floodwatchdb
-      POSTGRES_USER: devuser
-      POSTGRES_PASSWORD: devpass
-    volumes:
-      - postgres_data:/var/lib/postgresql/data
-    ports:
-      - "5432:5432"
-    networks:
-      - floodwatchnet
-
-networks:
-  floodwatchnet:
-
-volumes:
-  postgres_data:
-🧪 Testes CRUD e Logs
-✅ Operações testadas no Swagger UI
-
-✅ Logs da aplicação disponíveis via docker logs
-
-✅ Dados persistem após reiniciar os containers
-
-✅ Dados verificados diretamente via psql
+Serviço da API FloodWatch
+Banco de dados PostgreSQL
+Rede compartilhada
+Volume persistente para dados do PostgreSQL
