@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("FloodWatch.API")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+52cca9a687bb431177d7f07934d2177dbafe8007")]
 [assembly: System.Reflection.AssemblyProductAttribute("FloodWatch.API")]
 [assembly: System.Reflection.AssemblyTitleAttribute("FloodWatch.API")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
