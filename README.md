@@ -3,16 +3,15 @@
 **API REST para monitoramento e alerta de enchentes em tempo real**, desenvolvida em ASP.NET Core e integrada a banco de dados PostgreSQL. O projeto está 100% conteinerizado para entrega DevOps, com volume persistente e configuração segura.
 
 👥 Integrantes
-Gusthavo Daniel de Souza — RM:554681
+Gusthavo Daniel de Souza  — RM: 554681
 
-Lucas Miranda Leite  — RM:555161 
+Lucas Miranda Leite  — RM: 555161 
 
 Guilherme Damasio 
-Roselli  — RM:555873
+Roselli  — RM: 555873
 
 🎥 Vídeo Demonstrativo
 👉 https://youtu.be/tSY9j94pFhw
-
 
 ## 🛠️ Tecnologias Utilizadas
 
@@ -81,7 +80,6 @@ Editar
 docker-compose up -d --build
 docker-compose down
 🔌 Endpoints da API
-
 🔐 Autenticação
 POST /api/auth/login
 
@@ -92,7 +90,6 @@ GET /api/auth/profile
 PUT /api/auth/profile
 
 POST /api/auth/change-password
-
 
 📡 Sensores
 GET /api/sensores
