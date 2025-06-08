@@ -38,14 +38,13 @@ Editar
 
 ## ⚙️ Configuração
 
-### 🔐 Configuração do Banco de Dados
+### 🔐 Banco de Dados
 
-No `appsettings.json`:
 ```json
 "ConnectionStrings": {
   "DefaultConnection": "Host=localhost;Database=floodwatch;Username=postgres;Password=postgres123;Port=5432"
 }
-🔐 Configuração JWT
+🔐 JWT
 json
 Copiar
 Editar
@@ -60,38 +59,28 @@ Editar
 bash
 Copiar
 Editar
-# Restaurar pacotes
 dotnet restore
-
-# Compilar
 dotnet build
-
-# Criar a base de dados com migrações
 dotnet ef migrations add InitialCreate
 dotnet ef database update
-
-# Executar
 dotnet run
 🐳 Usando Docker
 bash
 Copiar
 Editar
-# Subir containers com volume persistente e rede customizada
 docker-compose up -d --build
-
-# Parar os serviços
 docker-compose down
 🔌 Endpoints da API
 🔐 Autenticação
-POST /api/auth/login — Login
+POST /api/auth/login
 
-POST /api/auth/register — Cadastro
+POST /api/auth/register
 
-GET /api/auth/profile — Perfil do usuário
+GET /api/auth/profile
 
-PUT /api/auth/profile — Atualizar perfil
+PUT /api/auth/profile
 
-POST /api/auth/change-password — Trocar senha
+POST /api/auth/change-password
 
 📡 Sensores
 GET /api/sensores
@@ -136,28 +125,28 @@ PUT /api/alertas/{id}
 DELETE /api/alertas/{id}
 
 📃 Documentação Swagger
-Disponível automaticamente ao rodar o projeto:
+Disponível em:
 
 bash
 Copiar
 Editar
 http://localhost:8080/swagger
 📦 Containerização
-📁 Dockerfile (Aplicação)
-Baseado em imagem oficial .NET 8.0 SDK/Runtime
+📁 Dockerfile (API)
+Base: mcr.microsoft.com/dotnet/aspnet:8.0
 
 Usuário não-root
 
-WORKDIR configurado
+Diretório de trabalho customizado
 
-Variáveis de ambiente
+Variáveis de ambiente definidas
 
 Porta 8080 exposta
 
-📁 Dockerfile (Banco de Dados)
-Imagem baseada em postgres:16
+📁 Dockerfile.db (Banco de Dados)
+Base: postgres:16
 
-Volume nomeado: postgres_data
+Volume persistente: postgres_data
 
 Variáveis: POSTGRES_DB, POSTGRES_USER, POSTGRES_PASSWORD
 
@@ -200,10 +189,17 @@ networks:
 volumes:
   postgres_data:
 🧪 Testes CRUD e Logs
-✅ Operações testadas no Swagger UI
+✅ CRUD testado via Swagger
+✅ Dados persistem mesmo após reiniciar containers
+✅ Logs verificados com docker logs
+✅ Validação manual via psql direto no container
 
-✅ Logs da aplicação disponíveis via docker logs
+👥 Integrantes
+Fulano da Silva — RM123456
 
-✅ Dados persistem após reiniciar os containers
+Ciclano Oliveira — RM234567
 
-✅ Dados verificados diretamente via psql
+Beltrano Santos — RM345678
+
+🎥 Vídeo Demonstrativo
+👉 Clique aqui para assistir ao vídeo no YouTube
